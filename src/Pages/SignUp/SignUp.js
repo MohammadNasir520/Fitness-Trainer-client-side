@@ -22,7 +22,7 @@ const SignUp = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-1/2 mx-auto">
       <div>
         <div className="mb-2 block">
           <Label htmlFor="email1" value="Your email" />
@@ -31,7 +31,7 @@ const SignUp = () => {
           id="email1"
           type="email"
           name="email"
-          placeholder="name@flowbite.com"
+          placeholder="Email"
           required={true}
         />
       </div>
@@ -42,7 +42,7 @@ const SignUp = () => {
         <TextInput id="password1" name="password" type="password" required={true} />
       </div>
 
-      <Button type="submit">Submit</Button>
+      <Button type="submit">SignUp</Button>
     </form>
   );
 };

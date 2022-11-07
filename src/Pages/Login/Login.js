@@ -1,13 +1,13 @@
 import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
 
 const Login = () => {
   const { signInViaEmailAndPassword, signInByGoogle } = useContext(AuthContext);
 
   const googleProvider= new GoogleAuthProvider();
-
+  const navigate=useNavigate()
   const handleLogin = (event) => {
     event.preventDefault();
     const email = event.target.email.value;
@@ -17,6 +17,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        navigate('/')
       })
       .catch((err) => {
         console.log(err);
@@ -27,6 +28,8 @@ const Login = () => {
     signInByGoogle(googleProvider)
     .then(result=>{
     const user=result.user
+    navigate('/')
+
     })
     .catch(err=>{
         console.log(err)
@@ -35,7 +38,7 @@ const Login = () => {
 
   return (
     <div>
-      <div className="w-full max-w-md p-8 space-y-3 rounded-xl mx-auto">
+      <div className="w-full max-w-md p-8 space-y-3 rounded-xl mx-auto ">
         <h1 className="text-2xl font-bold text-center">SignIn</h1>
         <form
           onSubmit={handleLogin}

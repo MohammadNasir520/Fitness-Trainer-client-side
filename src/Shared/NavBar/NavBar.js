@@ -63,8 +63,8 @@ const NavBar = () => {
 
         {user?.uid ? (
           <>
-            <Link to="/navbars">MyReviews</Link>
-            <Link to="/navbars">AddServices</Link>
+            <Link to="/myReviews">MyReviews</Link>
+            <Link to="/addServices">AddServices</Link>
             <Link onClick={handleSignOut}>SignOut</Link>
           </>
         ) : (
