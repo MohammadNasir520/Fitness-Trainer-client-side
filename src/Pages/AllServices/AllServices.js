@@ -1,10 +1,17 @@
 import React from 'react';
+import { useLoaderData } from 'react-router-dom';
 import ServicesCard from '../../Shared/servicesCard/ServicesCard';
 
 const AllServices = () => {
+    const allServices=useLoaderData()
     return (
-        <div>
-                <ServicesCard></ServicesCard>
+        <div  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+               {
+                    allServices.map(service=><ServicesCard
+                    service={service}
+                    key={service._id}
+                    ></ServicesCard>)
+               }
         </div>
     );
 };

@@ -1,6 +1,6 @@
 import { Button, Carousel } from "flowbite-react";
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import ServicesCard from "../../Shared/servicesCard/ServicesCard";
 
 const Home = () => {
@@ -44,13 +44,13 @@ const Home = () => {
 
      </div>
      <div>
-    <Button
+   <Link to={'/allServices'}> <Button
     className="mx-auto my-5"
       color="success"
       pill={true}
     >
       See All Services
-    </Button>
+    </Button></Link>
   </div>
     </div>
   );
