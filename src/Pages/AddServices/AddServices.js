@@ -10,6 +10,26 @@ const AddServices = () => {
         const description=event.target.description.value;
         const image=event.target.image.value;
         console.log(name,price,description,image)
+        const services={
+            name,price,description,image
+        }
+
+        fetch('http://localhost:5000/services',{
+            method: 'POST',
+            headers: {
+                'content-type':'application/json'
+            },
+            body: JSON.stringify(services)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data)
+            if(data.acknowledged){
+                alert('services placed')
+                event.target.reset();
+            }
+        })
+        .catch(err=>console.log(err));
     }
 
 
@@ -18,13 +38,13 @@ const AddServices = () => {
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-1/2 mx-auto">
         <div>
           <div className="mb-2 block">
-            <Label htmlFor="name" value="Your name" />
+            <Label htmlFor="name" value="Service name" />
           </div>
           <TextInput
             id="name"
             type="text"
             name="name"
-            placeholder="enter your name"
+            placeholder="enter service name"
             required={true}
           />
         </div>
@@ -44,7 +64,7 @@ const AddServices = () => {
           <div className="mb-2 block">
             <Label htmlFor="imageUrl" value="Services imageUrl" />
           </div>
-          <TextInput id="imageUrl" name="image" type="text"  placeholder="tell about services" required={true} />
+          <TextInput id="imageUrl" name="image" type="text"  placeholder="paste here service image url" required={true} />
         </div>
   
         <Button type="submit">AddServices</Button>
