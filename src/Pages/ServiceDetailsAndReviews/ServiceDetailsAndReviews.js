@@ -93,7 +93,7 @@ const ServiceDetailsAndReviews = () => {
 
       {/*---------------------- add reviews section----------------------- */}
 
-      <div>
+      <div className="my-10 p-4 bg-red-100">
         <form
           onSubmit={handleReviews}
           className="flex flex-col gap-4 w-1/2 mx-auto"
