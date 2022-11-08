@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const ReviewCard = ({ crReview }) => {
   // console.log(crReview)
-  const { email, image, name, review } = crReview;
+  const { email, image, userName, review } = crReview;
   return (
     <div>
       <Card>
@@ -25,7 +25,7 @@ const ReviewCard = ({ crReview }) => {
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className="truncate text-sm font-medium text-gray-900 dark:text-white">
-                    {name}
+                    {userName}
                   </p>
                   <p className="truncate text-sm text-gray-500 dark:text-gray-400">
                     {email}

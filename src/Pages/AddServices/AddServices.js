@@ -17,7 +17,7 @@ const AddServices = () => {
         const email=event.target.email.value;
         console.log(name,email,price,description,image)
         const services={
-            name,email,price,description,image
+         name,email,price,description,image
         }
 
         fetch('http://localhost:5000/services',{

@@ -20,6 +20,9 @@ console.log(reviews)
 
 },[user?.email],reviews)
 
+
+//deelte review system
+
 const handleDelete=id=>{
     const procede= window.confirm('are you sure, you want to cancle this order')
     if(procede){
@@ -38,6 +41,9 @@ const handleDelete=id=>{
     }
   
     }
+
+
+    
 
     return (
         <div>

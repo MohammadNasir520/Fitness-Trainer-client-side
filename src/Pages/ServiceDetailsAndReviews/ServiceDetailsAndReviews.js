@@ -41,15 +41,16 @@ const ServiceDetailsAndReviews = () => {
     event.preventDefault();
     const review = event.target.Reviews.value;
 
-    const name = user?.displayName;
+    const userName = user?.displayName;
     const email = user?.email;
     const image = user?.photoURL;
     const reviews = {
-      name,
+      userName,
       email,
       image,
       review,
       serviceId: _id,
+      serviceName:name,
     };
 
 
