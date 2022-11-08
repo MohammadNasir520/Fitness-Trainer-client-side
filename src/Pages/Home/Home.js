@@ -1,11 +1,14 @@
 import { Button, Carousel } from "flowbite-react";
 import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import useTittle from "../../Hooks/Hooks";
 import ServicesCard from "../../Shared/servicesCard/ServicesCard";
 
 const Home = () => {
   const services=useLoaderData()
   console.log(services)
+
+  useTittle('Home')
   return (
     <div>
 

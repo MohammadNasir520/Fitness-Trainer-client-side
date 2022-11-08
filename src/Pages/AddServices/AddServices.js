@@ -1,7 +1,12 @@
 import { Button, Label, TextInput } from 'flowbite-react';
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../Context/AuthProvider';
+import useTittle from '../../Hooks/Hooks';
 
 const AddServices = () => {
+
+    const {user}=useContext(AuthContext)
+  useTittle('AddServices')
 
     const handleSubmit =event=>{
         event.preventDefault()
@@ -9,9 +14,10 @@ const AddServices = () => {
         const price=event.target.price.value;
         const description=event.target.description.value;
         const image=event.target.image.value;
-        console.log(name,price,description,image)
+        const email=event.target.email.value;
+        console.log(name,email,price,description,image)
         const services={
-            name,price,description,image
+            name,email,price,description,image
         }
 
         fetch('http://localhost:5000/services',{
@@ -65,6 +71,12 @@ const AddServices = () => {
             <Label htmlFor="imageUrl" value="Services imageUrl" />
           </div>
           <TextInput id="imageUrl" name="image" type="text"  placeholder="paste here service image url" required={true} />
+        </div>
+        <div>
+          <div className="mb-2 block">
+            <Label htmlFor="Email" value="Your Email" />
+          </div>
+          <TextInput id="Email" name="email" type="email" defaultValue={user?.email} readOnly  placeholder="Your Email" required={true} />
         </div>
   
         <Button type="submit">AddServices</Button>
