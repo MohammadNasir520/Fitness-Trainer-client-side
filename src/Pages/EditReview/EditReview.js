@@ -46,6 +46,7 @@ const handleEdit=event=>{
               id="Reviews"
               name="Reviews"
               type="text"
+              defaultValue={specificReviw.review}
               placeholder="Edit Your Review"
               required={true}
             />

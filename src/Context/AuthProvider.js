@@ -9,14 +9,17 @@ const auth = getAuth(app);
 const AuthProvider = ({children}) => {
 
     const [user, setUser] = useState(null);
+    
+    const [loading, setLoading] = useState(true);
+
 
 const createUserWithEmail= (email, password) => {
-    
+  setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
   //   sign in with email and password
   const signInViaEmailAndPassword = (email, password) => {
- 
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
   
@@ -24,7 +27,7 @@ const createUserWithEmail= (email, password) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       console.log(currentUser);
       setUser(currentUser);
-      
+      setLoading(false)
     });
 
     return () => {
@@ -35,11 +38,12 @@ const createUserWithEmail= (email, password) => {
 
     // sign in by google
     const signInByGoogle = (Provider) => {
-      
+      setLoading(true);
         return signInWithPopup(auth, Provider);
       };
 
   const LogOut=()=>{
+    setLoading(true);
     return signOut(auth)
   }
 
@@ -49,7 +53,8 @@ const createUserWithEmail= (email, password) => {
         createUserWithEmail,
         signInViaEmailAndPassword,
         LogOut,
-        signInByGoogle
+        signInByGoogle,
+        loading,
         
     }
 

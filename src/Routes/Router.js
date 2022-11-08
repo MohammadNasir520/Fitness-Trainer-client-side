@@ -23,7 +23,7 @@ export const router= createBrowserRouter([
             },
             {
                 path:'/home',
-                element:<Home></Home>,
+                element:<PrivateRoute><Home></Home></PrivateRoute>,
                 loader:()=>fetch('http://localhost:5000/services')
             },
             {
@@ -36,7 +36,7 @@ export const router= createBrowserRouter([
             },
             {
                 path:'/addServices',
-                element:<AddServices></AddServices>
+                element:<PrivateRoute><AddServices></AddServices></PrivateRoute>
             },
             {
                 path:'/myReviews',

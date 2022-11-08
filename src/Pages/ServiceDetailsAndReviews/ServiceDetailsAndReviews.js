@@ -10,31 +10,23 @@ const ServiceDetailsAndReviews = () => {
   useTittle("Service Review");
 
   const { user } = useContext(AuthContext);
-  
 
-
-  
   //destructurin servise details
   const service = useLoaderData();
-  console.log(service)
-  const { image, name, description,_id } = service;
-
+  console.log(service);
+  const { image, name, description, _id } = service;
 
   // usestate for getting Customer review.
   const [reviews, setReviews] = useState([]);
-
 
   //get customers review
   useEffect(() => {
     fetch(`http://localhost:5000/reviews?serviceId=${_id}`)
       .then((res) => res.json())
       .then((data) => {
-
         setReviews(data);
       });
   }, []);
-
-
 
   //handle input reviwe and set to mongodb
   const handleReviews = (event) => {
@@ -50,9 +42,8 @@ const ServiceDetailsAndReviews = () => {
       image,
       review,
       serviceId: _id,
-      serviceName:name,
+      serviceName: name,
     };
-
 
     //insert revie to mongo db
 
@@ -76,7 +67,6 @@ const ServiceDetailsAndReviews = () => {
 
   return (
     <div>
-
       {/* ----------------------service details------------------------- */}
       <div className="w-1/2  mx-auto">
         <Card
@@ -89,66 +79,57 @@ const ServiceDetailsAndReviews = () => {
           <p className="font-normal text-gray-700 dark:text-gray-400">
             {description}
           </p>
-
         </Card>
       </div>
 
       {/*---------------------- add reviews section----------------------- */}
 
-    {
-      user?.uid?
-      <div className="my-10 p-4 bg-red-100">
-      <form
-        onSubmit={handleReviews}
-        className="flex flex-col gap-4 w-1/2 mx-auto"
-      >
-        <div>
-          <div className="mb-2 block">
-            <Label htmlFor="Reviews" value="Services Reviews" />
-          </div>
-          <TextInput
-            id="Reviews"
-            name="Reviews"
-            type="text"
-            placeholder="tell about services"
-            required={true}
-          />
+      {user?.uid ? (
+        <div className="my-10 p-4 bg-red-100">
+          <form
+            onSubmit={handleReviews}
+            className="flex flex-col gap-4 w-1/2 mx-auto"
+          >
+            <div>
+              <div className="mb-2 block">
+                <Label htmlFor="Reviews" value="Services Reviews" />
+              </div>
+              <TextInput
+                id="Reviews"
+                name="Reviews"
+                type="text"
+                placeholder="tell about services"
+                required={true}
+              />
+            </div>
+
+            <Button type="submit">Add Reviews</Button>
+          </form>
         </div>
-
-   
-
-        <Button type="submit">Add Reviews</Button>
-      </form>
-    </div>
-
-      :
-
-     <div className="text-center p-10 bg-red-100">
-       <h1>Please Login to Add Review</h1>
-     </div>
-
-    }
+      ) : (
+        <div className="text-center p-10 bg-red-100">
+          <div className="text-1xl font-bold flex justify-center align-middle">
+            <p >
+              {" "}
+              Please <Link className="text-green-400" to={"/login"}> SignIn</Link> to Add Review{" "}
+            </p>
+          </div>
+        </div>
+      )}
 
       {/* -----------show review  ---------------------------------------*/}
       <div>
-
-
         <div className="">
           <div className="mb-4 flex items-center justify-between">
             <h5 className="text-xl text-center font-bold leading-none text-gray-900 dark:text-white">
               Customers Reviews
             </h5>
           </div>
-            <div>
-              {
-                reviews.map(review=><ReviewCard
-                key={review._id}
-                crReview={review}
-                ></ReviewCard>)
-              }
-            </div>
-
-        
+          <div>
+            {reviews.map((review) => (
+              <ReviewCard key={review._id} crReview={review}></ReviewCard>
+            ))}
+          </div>
         </div>
       </div>
     </div>

@@ -16,7 +16,7 @@ const NavBar = () => {
   };
 
   return (
-    <Navbar fluid={true} rounded={true}>
+    <Navbar fluid={true} rounded={true} className="bg-cyan-50">
       <Navbar.Brand to="https://flowbite.com/">
         <img
           src="https://flowbite.com/docs/images/logo.svg"
@@ -24,7 +24,7 @@ const NavBar = () => {
           alt="Flowbite Logo"
         />
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-          Flowbite
+          Fitness Trainer
         </span>
       </Navbar.Brand>
       <div className="flex md:order-2">
