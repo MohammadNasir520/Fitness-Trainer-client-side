@@ -4,27 +4,38 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
 import useTittle from "../../Hooks/Hooks";
+import ReviewCard from "./ReviewCard";
 
 const ServiceDetailsAndReviews = () => {
   useTittle("Service Review");
 
   const { user } = useContext(AuthContext);
-  console.log(user?.displayName);
+  
 
+
+  
+  //destructurin servise details
   const service = useLoaderData();
-  const { image, name, Reviews } = service;
+  console.log(service)
+  const { image, name, description,_id } = service;
 
+
+  // usestate for getting Customer review.
   const [reviews, setReviews] = useState([]);
-  console.log(reviews);
 
+
+  //get customers review
   useEffect(() => {
-    fetch("http://localhost:5000/reviews")
+    fetch(`http://localhost:5000/reviews?serviceId=${_id}`)
       .then((res) => res.json())
       .then((data) => {
         setReviews(data);
       });
-  }, []);
+  }, [reviews]);
 
+
+
+  //handle input reviwe and set to mongodb
   const handleReviews = (event) => {
     event.preventDefault();
     const review = event.target.Reviews.value;
@@ -37,7 +48,11 @@ const ServiceDetailsAndReviews = () => {
       email,
       image,
       review,
+      serviceId: _id,
     };
+
+
+    //insert revie to mongo db
 
     fetch("http://localhost:5000/reviews", {
       method: "POST",
@@ -59,6 +74,8 @@ const ServiceDetailsAndReviews = () => {
 
   return (
     <div>
+
+      {/* ----------------------service details------------------------- */}
       <div className="w-1/2  mx-auto">
         <Card
           imgAlt="Meaningful alt text for an image that is not purely decorative"
@@ -68,19 +85,13 @@ const ServiceDetailsAndReviews = () => {
             {name}
           </h5>
           <p className="font-normal text-gray-700 dark:text-gray-400">
-            {Reviews}
+            {description}
           </p>
 
-          {/* <Link>
-          {" "}
-          <div>
-            <Button gradientMonochrome="cyan">Cyan</Button>
-          </div>
-        </Link> */}
         </Card>
       </div>
 
-      {/* add reviews section */}
+      {/*---------------------- add reviews section----------------------- */}
 
       <div>
         <form
@@ -100,73 +111,32 @@ const ServiceDetailsAndReviews = () => {
             />
           </div>
 
-          {/* <div>
-            <div className="mb-2 block">
-              <Label htmlFor="Email" value="Your Email" />
-            </div>
-            <TextInput
-              id="Email"
-              name="email"
-              type="email"
-              defaultValue={user.email}
-              readOnly
-              placeholder="Your Email"
-              required={true}
-            />
-          </div> */}
+     
 
           <Button type="submit">Add Reviews</Button>
         </form>
       </div>
 
-      {/* show review */}
+      {/* -----------show review  ---------------------------------------*/}
       <div>
 
-        
+
         <div className="">
           <div className="mb-4 flex items-center justify-between">
             <h5 className="text-xl text-center font-bold leading-none text-gray-900 dark:text-white">
               Customers Reviews
             </h5>
           </div>
-
-
-
-          <Card>
             <div>
-              <p>
-                there will be
-                reviw'asokjfd'p;awkf'wkefpkdsfkdkfsddkfpakf[pdkf[sdklfsdfksadkfs;ladf;'sakdfss'sdfksdkfsk
-              </p>
+              {
+                reviews.map(review=><ReviewCard
+                key={review._id}
+                crReview={review}
+                ></ReviewCard>)
+              }
             </div>
 
-            <div className="flow-root">
-              <ul className="divide-y divide-gray-200 dark:divide-gray-700">
-                <li className="pt-3 pb-0 sm:pt-4">
-                  <div className="flex items-center space-x-4">
-                    <div className="shrink-0">
-                      <img
-                        className="h-8 w-8 rounded-full"
-                        src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                        alt="Thomas image"
-                      />
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <p className="truncate text-sm font-medium text-gray-900 dark:text-white">
-                        Thomes Lean
-                      </p>
-                      <p className="truncate text-sm text-gray-500 dark:text-gray-400">
-                        email@windster.com
-                      </p>
-                    </div>
-                    <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                      $2367
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </Card>
+        
         </div>
       </div>
     </div>
