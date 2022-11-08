@@ -29,9 +29,10 @@ const ServiceDetailsAndReviews = () => {
     fetch(`http://localhost:5000/reviews?serviceId=${_id}`)
       .then((res) => res.json())
       .then((data) => {
+
         setReviews(data);
       });
-  }, [reviews]);
+  }, []);
 
 
 
@@ -93,29 +94,39 @@ const ServiceDetailsAndReviews = () => {
 
       {/*---------------------- add reviews section----------------------- */}
 
+    {
+      user?.uid?
       <div className="my-10 p-4 bg-red-100">
-        <form
-          onSubmit={handleReviews}
-          className="flex flex-col gap-4 w-1/2 mx-auto"
-        >
-          <div>
-            <div className="mb-2 block">
-              <Label htmlFor="Reviews" value="Services Reviews" />
-            </div>
-            <TextInput
-              id="Reviews"
-              name="Reviews"
-              type="text"
-              placeholder="tell about services"
-              required={true}
-            />
+      <form
+        onSubmit={handleReviews}
+        className="flex flex-col gap-4 w-1/2 mx-auto"
+      >
+        <div>
+          <div className="mb-2 block">
+            <Label htmlFor="Reviews" value="Services Reviews" />
           </div>
+          <TextInput
+            id="Reviews"
+            name="Reviews"
+            type="text"
+            placeholder="tell about services"
+            required={true}
+          />
+        </div>
 
-     
+   
 
-          <Button type="submit">Add Reviews</Button>
-        </form>
-      </div>
+        <Button type="submit">Add Reviews</Button>
+      </form>
+    </div>
+
+      :
+
+     <div className="text-center p-10 bg-red-100">
+       <h1>Please Login to Add Review</h1>
+     </div>
+
+    }
 
       {/* -----------show review  ---------------------------------------*/}
       <div>

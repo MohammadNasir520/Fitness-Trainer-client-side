@@ -31,7 +31,7 @@ const AddServices = () => {
         .then(data=>{
             console.log(data)
             if(data.acknowledged){
-                alert('services placed')
+                alert('service added succesfully')
                 event.target.reset();
             }
         })

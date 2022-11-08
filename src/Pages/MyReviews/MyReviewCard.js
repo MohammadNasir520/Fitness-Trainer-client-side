@@ -2,8 +2,14 @@ import { Button, Card } from 'flowbite-react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const MyReviewCard = ({myreview}) => {
-    const{image,name,email,review}=myreview
+const MyReviewCard = ({myreview,handleDelete}) => {
+    const{image,name,email,review,_id}=myreview
+
+    
+
+
+
+
     return (
         <div>
                <Card>
@@ -34,7 +40,15 @@ const MyReviewCard = ({myreview}) => {
                   <Link>
                     {" "}
                     <div>
-                      <Button gradientMonochrome="cyan">Delete Review</Button>
+                      <Button gradientMonochrome="cyan">Edit</Button>
+                    </div>
+                  </Link>
+                </div>
+                <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                  <Link>
+                    {" "}
+                    <div>
+                      <Button onClick={()=>handleDelete(_id)} gradientMonochrome="cyan">Delete Review</Button>
                     </div>
                   </Link>
                 </div>
