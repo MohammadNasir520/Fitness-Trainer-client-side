@@ -13,26 +13,26 @@ const Home = () => {
   useTittle("Home");
   return (
     <div>
-      <div className="h-56 sm:h-64 xl:h-80 2xl:h-96">
+      <div className="h-56 sm:h-64 xl:h-80 2xl:h-2/4 w-3/4 mx-auto">
         <Carousel>
           <img
-            src="https://flowbite.com/docs/images/carousel/carousel-1.svg"
+            src="https://image.shutterstock.com/image-photo/man-running-on-road-toward-260nw-749383591.jpg"
             alt="..."
           />
           <img
-            src="https://flowbite.com/docs/images/carousel/carousel-2.svg"
+            src="https://blog.arenaswim.com/wp-content/uploads/2015/03/swimmer-training.jpg"
             alt="..."
           />
           <img
-            src="https://flowbite.com/docs/images/carousel/carousel-3.svg"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStlfcHQCOjTrXxWr2aHm_8utiYIOGSCCEJyg&usqp=CAU"
             alt="..."
           />
           <img
-            src="https://flowbite.com/docs/images/carousel/carousel-4.svg"
+            src="https://img.freepik.com/free-photo/concept-power-strength-healthy-lifestyle-sport-powerful-attractive-muscular-man-gym_155003-4993.jpg?size=626&ext=jpg&ga=GA1.2.424094994.1665416332&semt=sph"
             alt="..."
           />
           <img
-            src="https://flowbite.com/docs/images/carousel/carousel-5.svg"
+            src="https://www.outsideonline.com/wp-content/uploads/2019/02/22/man-doing-bench-pushups_s.jpg"
             alt="..."
           />
         </Carousel>
