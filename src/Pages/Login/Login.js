@@ -1,4 +1,5 @@
 import { GoogleAuthProvider } from "firebase/auth";
+import { Spinner } from "flowbite-react";
 import React, { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
@@ -14,7 +15,15 @@ const Login = () => {
 
   const from= location.state?.from?.pathname || '/';
 
-  const { signInViaEmailAndPassword, signInByGoogle } = useContext(AuthContext);
+  const { signInViaEmailAndPassword, signInByGoogle ,loading} = useContext(AuthContext);
+
+  if (loading) {
+    return (
+      <div className="text-center mt-6">
+        <Spinner color="success" aria-label="Success spinner example" />
+      </div>
+    );
+  }
 
   const googleProvider= new GoogleAuthProvider();
   // const navigate=useNavigate()

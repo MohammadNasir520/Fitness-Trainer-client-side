@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, signInWithPopup } from "firebase/auth";
 import app from '../FirebaseFile/Firebase.init';
+import { Spinner } from 'flowbite-react';
 
 
 export const AuthContext=createContext();
@@ -11,8 +12,9 @@ const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
     
     const [loading, setLoading] = useState(true);
+    
 
-
+//crete user creating by email and password
 const createUserWithEmail= (email, password) => {
   setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);

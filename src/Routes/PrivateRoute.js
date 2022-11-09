@@ -11,10 +11,7 @@ const PrivateRoute = ({ children }) => {
   if (loading) {
     return (
       <div className="text-center mt-6">
-      <Spinner
-    color="success"
-    aria-label="Success spinner example"
-  />
+        <Spinner color="success" aria-label="Success spinner example" />
       </div>
     );
   }

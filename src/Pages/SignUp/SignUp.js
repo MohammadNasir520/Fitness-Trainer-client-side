@@ -1,9 +1,18 @@
-import { Button, Label, TextInput } from "flowbite-react";
+import { Button, Label, Spinner, TextInput } from "flowbite-react";
 import React, { useContext } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
 
 const SignUp = () => {
-  const { createUserWithEmail } = useContext(AuthContext);
+  const { createUserWithEmail,loading } = useContext(AuthContext);
+
+
+  if (loading) {
+    return (
+      <div className="text-center mt-6">
+        <Spinner color="success" aria-label="Success spinner example" />
+      </div>
+    );
+  }
 
 
   const handleSubmit =event=>{
