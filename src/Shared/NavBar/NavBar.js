@@ -2,6 +2,7 @@ import { Avatar, Dropdown, Navbar } from "flowbite-react";
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
+import icon from '../../images/favicon.png'
 
 const NavBar = () => {
   const { user, LogOut } = useContext(AuthContext);
@@ -19,7 +20,7 @@ const NavBar = () => {
     <Navbar fluid={true} rounded={true} className="bg-cyan-50">
       <Navbar.Brand to="https://flowbite.com/">
         <img
-          src="https://flowbite.com/docs/images/logo.svg"
+          src={icon}
           className="mr-3 h-6 sm:h-9"
           alt="Flowbite Logo"
         />

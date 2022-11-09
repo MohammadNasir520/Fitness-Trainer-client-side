@@ -14,7 +14,13 @@ console.log(reviews)
 
   //query my  review
   useEffect(()=>{
-    fetch(`http://localhost:5000/reviews?email=${user?.email}`)
+    fetch(`http://localhost:5000/reviews?email=${user?.email}`,{
+      headers:{
+        
+                authorization: `Bearer ${localStorage.getItem('fitness token')}`
+              }
+
+    })
      .then(res=>res.json())
     .then(data=>setReviews(data))
 
@@ -33,7 +39,7 @@ const handleDelete=id=>{
       .then(data=>{
           console.log(data)
           if(data.deletedCount>0){
-              alert("orders deleted succesFully");
+              alert("reviews deleted succesFully");
               const remaining= reviews.filter(review=>review._id !==id);
               setReviews(remaining)
           }
