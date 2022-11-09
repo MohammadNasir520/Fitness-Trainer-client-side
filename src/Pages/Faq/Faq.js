@@ -1,7 +1,10 @@
 import { Accordion } from "flowbite-react";
 import React from "react";
+import useTittle from "../../Hooks/Hooks";
 
 const Faq = () => {
+  useTittle('Faq');
+  
   return (
     <div>
 

@@ -6,9 +6,9 @@ const ReviewCard = ({ crReview }) => {
   // console.log(crReview)
   const { email, image, userName, review } = crReview;
   return (
-    <div>
-      <Card>
-        <div>
+    <div className="my-4">
+      <Card className=" bg-teal-50">
+        <div className="w-full text-center">
           <p>{review}</p>
         </div>
 

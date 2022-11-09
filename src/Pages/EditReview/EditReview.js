@@ -3,8 +3,11 @@ import { Button, Label, TextInput } from 'flowbite-react';
 import React from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import useTittle from '../../Hooks/Hooks';
 
 const EditReview = () => {
+
+  useTittle('EditReview')
    const specificReviw=useLoaderData()
  
 const handleEdit=event=>{
@@ -32,6 +35,7 @@ const handleEdit=event=>{
       if(data.matchedCount || data.modifiedCount){
         toast('review edited successfully')
       }
+      
       console.log(data)})
 
 }

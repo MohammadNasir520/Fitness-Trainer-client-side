@@ -13,7 +13,7 @@ const Home = () => {
   useTittle("Home");
   return (
     <div>
-      <div className="h-56 sm:h-64 xl:h-80 2xl:h-2/4 w-3/4 mx-auto">
+      <div className="h-56 sm:h-64 w-full xl:h-80 2xl:h-2/4 lg:w-3/4 mx-auto">
         <Carousel>
           <img
             src="https://image.shutterstock.com/image-photo/man-running-on-road-toward-260nw-749383591.jpg"

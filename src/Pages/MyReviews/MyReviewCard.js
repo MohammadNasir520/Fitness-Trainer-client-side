@@ -9,8 +9,8 @@ const MyReviewCard = ({ myreview, handleDelete }) => {
 
   return (
     <div>
-      <Card>
-        <div>
+      <Card className=" bg-teal-50 my-4">
+        <div className="w-full text-center">
           <p>{review}</p>
         </div>
 

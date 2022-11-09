@@ -143,13 +143,30 @@ const ServiceDetailsAndReviews = () => {
       )}
 
       {/* -----------show review  ---------------------------------------*/}
+   
+
       <div>
         <div className="">
-          <div className="mb-4 flex items-center justify-between">
+          <div className="mb-4 ">
             <h5 className="text-xl text-center font-bold leading-none text-gray-900 dark:text-white">
               Student Reviews
             </h5>
+            
           </div>
+
+          {
+              reviews==0 &&
+               <div className='w-full h-20 bg-red-100'>
+
+
+                <h1 className='text-lg text-center text-semibold'>No review yet </h1>
+
+
+              </div>
+            }
+
+
+
           <div>
             {reviews.map((review) => (
               <ReviewCard key={review._id} crReview={review}></ReviewCard>

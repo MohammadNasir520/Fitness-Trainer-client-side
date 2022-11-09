@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useTittle from '../../Hooks/Hooks';
 
 const ErrorPage = () => {
+  useTittle('Error')
     return (
         <div>
           

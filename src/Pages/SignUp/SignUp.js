@@ -1,8 +1,10 @@
 import { Button, Label, Spinner, TextInput } from "flowbite-react";
 import React, { useContext } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
+import useTittle from "../../Hooks/Hooks";
 
 const SignUp = () => {
+  useTittle('signUp')
   const { createUserWithEmail,loading } = useContext(AuthContext);
 
 

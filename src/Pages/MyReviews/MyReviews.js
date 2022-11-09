@@ -4,9 +4,10 @@ import { toast } from 'react-toastify';
 import { AuthContext } from '../../Context/AuthProvider';
 import MyReviewCard from './MyReviewCard';
 import 'react-toastify/dist/ReactToastify.css';
+import useTittle from '../../Hooks/Hooks';
 
 const MyReviews = () => {
-
+useTittle('MyReview')
     const {user}=useContext(AuthContext)
 
 
