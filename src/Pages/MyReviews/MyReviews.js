@@ -56,6 +56,20 @@ const handleDelete=id=>{
     return (
         <div>
             {
+              reviews==0 &&
+               <div className='w-full h-20 bg-slate-100'>
+
+
+                <h1 className='text-lg text-center text-semibold'>No reviwe were Added</h1>
+
+
+              </div>
+            }
+
+            {
+              
+
+
             reviews.map(review=><MyReviewCard
             myreview={review}
             key={review._id}
