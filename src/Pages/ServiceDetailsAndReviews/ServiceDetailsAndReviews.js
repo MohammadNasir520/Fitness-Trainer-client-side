@@ -14,7 +14,7 @@ const ServiceDetailsAndReviews = () => {
   //destructurin servise details
   const service = useLoaderData();
   console.log(service);
-  const { image, name, description, _id } = service;
+  const { image, name, price,description, _id } = service;
 
   // usestate for getting Customer review.
   const [reviews, setReviews] = useState([]);
@@ -76,6 +76,9 @@ const ServiceDetailsAndReviews = () => {
           <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             {name}
           </h5>
+          <h5 className="text-md font-semibold tracking-tight text-gray-900 dark:text-white">
+         Cervice Charge : {price} tk /month
+        </h5>
           <p className="font-normal text-gray-700 dark:text-gray-400">
             {description}
           </p>
@@ -92,7 +95,7 @@ const ServiceDetailsAndReviews = () => {
           >
             <div>
               <div className="mb-2 block">
-                <Label htmlFor="Reviews" value="Services Reviews" />
+                <Label htmlFor="Reviews" value={`Add a rview to ${name} service`} />
               </div>
               <TextInput
                 id="Reviews"
@@ -122,7 +125,7 @@ const ServiceDetailsAndReviews = () => {
         <div className="">
           <div className="mb-4 flex items-center justify-between">
             <h5 className="text-xl text-center font-bold leading-none text-gray-900 dark:text-white">
-              Customers Reviews
+              Student Reviews
             </h5>
           </div>
           <div>
