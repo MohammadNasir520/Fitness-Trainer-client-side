@@ -2,6 +2,7 @@ import { data } from "autoprefixer";
 import { Button, Card, Label, TextInput } from "flowbite-react";
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import { toast } from "react-toastify";
 import { AuthContext } from "../../Context/AuthProvider";
 import useTittle from "../../Hooks/Hooks";
 import ReviewCard from "./ReviewCard";
@@ -58,7 +59,7 @@ const ServiceDetailsAndReviews = () => {
       .then((data) => {
         console.log(data);
         if (data.acknowledged) {
-          alert("services placed");
+          toast('Review added successfully');
           event.target.reset();
         }
       })

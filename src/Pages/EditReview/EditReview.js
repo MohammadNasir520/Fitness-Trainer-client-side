@@ -2,6 +2,7 @@ import { data } from 'autoprefixer';
 import { Button, Label, TextInput } from 'flowbite-react';
 import React from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const EditReview = () => {
    const specificReviw=useLoaderData()
@@ -27,7 +28,11 @@ const handleEdit=event=>{
 
     })
     .then(res=>res.json())
-    .then(data=>console.log(data))
+    .then(data=>{
+      if(data.matchedCount || data.modifiedCount){
+        toast('review edited successfully')
+      }
+      console.log(data)})
 
 }
 

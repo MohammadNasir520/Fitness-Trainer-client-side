@@ -1,7 +1,9 @@
-import { Card } from 'flowbite-react';
+import { Card, Toast } from 'flowbite-react';
 import React, { useContext, useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../../Context/AuthProvider';
 import MyReviewCard from './MyReviewCard';
+import 'react-toastify/dist/ReactToastify.css';
 
 const MyReviews = () => {
 
@@ -30,8 +32,8 @@ console.log(reviews)
 //deelte review system
 
 const handleDelete=id=>{
-    const procede= window.confirm('are you sure, you want to cancle this order')
-    if(procede){
+    const agree= window.confirm('are you sure, you want to delete the review?')
+    if(agree){
       fetch(`http://localhost:5000/reviews/${id}`,{
           method: 'DELETE'
       })
@@ -39,7 +41,7 @@ const handleDelete=id=>{
       .then(data=>{
           console.log(data)
           if(data.deletedCount>0){
-              alert("reviews deleted succesFully");
+            toast("review deleted")
               const remaining= reviews.filter(review=>review._id !==id);
               setReviews(remaining)
           }
