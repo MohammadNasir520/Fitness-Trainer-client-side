@@ -3,6 +3,7 @@ import Main from "../Layout/Main";
 import AddServices from "../Pages/AddServices/AddServices";
 import AllServices from "../Pages/AllServices/AllServices";
 import EditReview from "../Pages/EditReview/EditReview";
+import Faq from "../Pages/Faq/Faq";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import MyReviews from "../Pages/MyReviews/MyReviews";
@@ -57,7 +58,11 @@ export const router= createBrowserRouter([
                 path:'/editReview/:id',
                 element:<EditReview></EditReview>,
                 loader:({params})=>fetch(`http://localhost:5000/reviews/${params.id}`)
-            }
+            },
+            {
+                path:'/faq',
+                element:<Faq></Faq>
+            },
         ]
     }
 ])

@@ -59,8 +59,9 @@ const NavBar = () => {
           Home
         </Link>
         <Link to="/navbars">About</Link>
-        <Link to="/navbars">Services</Link>
+        
         <Link to="/navbars">Pricing</Link>
+        <Link to="/faq">Faq</Link>
 
         {user?.uid ? (
           <>
