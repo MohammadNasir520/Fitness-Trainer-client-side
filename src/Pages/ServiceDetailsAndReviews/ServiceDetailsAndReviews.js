@@ -19,6 +19,7 @@ const ServiceDetailsAndReviews = () => {
 
   // usestate for getting Customer review.
   const [reviews, setReviews] = useState([]);
+  const [refresh,setrefress]=useState(false)
 
   //get customers review
   useEffect(() => {
@@ -27,7 +28,7 @@ const ServiceDetailsAndReviews = () => {
       .then((data) => {
         setReviews(data);
       });
-  }, []);
+  }, [refresh]);
 
   //handle input reviwe and set to mongodb
   const handleReviews = (event) => {
@@ -61,6 +62,9 @@ const ServiceDetailsAndReviews = () => {
         if (data.acknowledged) {
           toast('Review added successfully');
           event.target.reset();
+        
+          setrefress(!refresh)
+
         }
       })
       .catch((err) => console.log(err));
