@@ -1,6 +1,7 @@
 import { data } from "autoprefixer";
 import { Button, Card, Label, TextInput } from "flowbite-react";
 import React, { useContext, useEffect, useState } from "react";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 import { Link, useLoaderData } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../Context/AuthProvider";
@@ -15,11 +16,11 @@ const ServiceDetailsAndReviews = () => {
   //destructurin servise details
   const service = useLoaderData();
   console.log(service);
-  const { image, name, price,description, _id } = service;
+  const { image, name, price, description, _id } = service;
 
   // usestate for getting Customer review.
   const [reviews, setReviews] = useState([]);
-  const [refresh,setrefress]=useState(false)
+  const [refresh, setrefress] = useState(false);
 
   //get customers review
   useEffect(() => {
@@ -60,11 +61,10 @@ const ServiceDetailsAndReviews = () => {
       .then((data) => {
         console.log(data);
         if (data.acknowledged) {
-          toast('Review added successfully');
+          toast("Review added successfully");
           event.target.reset();
-        
-          setrefress(!refresh)
 
+          setrefress(!refresh);
         }
       })
       .catch((err) => console.log(err));
@@ -74,16 +74,25 @@ const ServiceDetailsAndReviews = () => {
     <div>
       {/* ----------------------service details------------------------- */}
       <div className="w-1/2  mx-auto">
-        <Card
-          imgAlt="Meaningful alt text for an image that is not purely decorative"
-          imgSrc={image}
-        >
+        <Card >
+
+            {/* rect photo viewr added */}
+          <PhotoProvider>
+            <div className="foo">
+              <PhotoView src={image}>
+                <img src={image} style={{ objectFit: 'cover' }} alt="service img" />
+              </PhotoView>
+            </div>
+          </PhotoProvider>
+
+
+
           <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             {name}
           </h5>
           <h5 className="text-md font-semibold tracking-tight text-gray-900 dark:text-white">
-         Cervice Charge : {price} tk /month
-        </h5>
+            Cervice Charge : {price} tk /month
+          </h5>
           <p className="font-normal text-gray-700 dark:text-gray-400">
             {description}
           </p>
@@ -100,7 +109,10 @@ const ServiceDetailsAndReviews = () => {
           >
             <div>
               <div className="mb-2 block">
-                <Label htmlFor="Reviews" value={`Add a rview to ${name} service`} />
+                <Label
+                  htmlFor="Reviews"
+                  value={`Add a rview to ${name} service`}
+                />
               </div>
               <TextInput
                 id="Reviews"
@@ -117,9 +129,14 @@ const ServiceDetailsAndReviews = () => {
       ) : (
         <div className="text-center p-10 bg-red-100">
           <div className="text-1xl font-bold flex justify-center align-middle">
-            <p >
+            <p>
               {" "}
-              Please <Link className="text-green-400" to={"/login"}> SignIn</Link> to Add Review{" "}
+              Please{" "}
+              <Link className="text-green-400" to={"/login"}>
+                {" "}
+                SignIn
+              </Link>{" "}
+              to Add Review{" "}
             </p>
           </div>
         </div>

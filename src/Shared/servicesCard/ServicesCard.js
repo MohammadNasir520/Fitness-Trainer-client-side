@@ -2,16 +2,27 @@ import { Button, Card } from "flowbite-react";
 import React from "react";
 import { Link } from "react-router-dom";
 
+import 'react-photo-view/dist/react-photo-view.css';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+
 const ServicesCard = ({ service }) => {
   const { name, _id, price, description, image } = service;
   return (
     <div className="max-w-sm mt-10 ">
-      <Card
-        imgAlt="service image"
+      <Card >
+         
+        {/* react photo viewr added to servicess image */}
+        
+          <PhotoProvider>
+      <div className="foo">
+          <PhotoView  src={image}>
+            <img src={image} style={{ objectFit: 'cover' }} alt="service img" />
+          </PhotoView>
        
-        // imgSrc={image}
-        >
-          <img className="h-64" src={image} alt="service images" />
+      </div>
+    </PhotoProvider>
+
+
         <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
           {name}
         </h5>
