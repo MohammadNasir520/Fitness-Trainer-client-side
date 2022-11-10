@@ -24,7 +24,7 @@ const ServiceDetailsAndReviews = () => {
 
   //get customers review
   useEffect(() => {
-    fetch(`http://localhost:5000/serviceReviews?serviceId=${_id}`,{
+    fetch(`https://assignmint-11-server.vercel.app/serviceReviews?serviceId=${_id}`,{
 
       headers: {
         authorization:`Bearrer ${localStorage.getItem('fitness-trainerToken')}`
@@ -57,7 +57,7 @@ const ServiceDetailsAndReviews = () => {
 
     //insert revie to mongo db
 
-    fetch("http://localhost:5000/reviews", {
+    fetch("https://assignmint-11-server.vercel.app/reviews", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -80,7 +80,7 @@ const ServiceDetailsAndReviews = () => {
   return (
     <div>
       {/* ----------------------service details------------------------- */}
-      <div className="w-1/2  mx-auto">
+      <div className="w-ful md:w-1/2 mx-auto">
         <Card >
 
             {/* rect photo viewr added */}

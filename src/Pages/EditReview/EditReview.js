@@ -22,7 +22,7 @@ const handleEdit=event=>{
     
     };
 
-    fetch(`http://localhost:5000/reviews/${specificReviw._id}`,{
+    fetch(`https://assignmint-11-server.vercel.app/reviews/${specificReviw._id}`,{
         method: 'PUT',
         headers:{
             'content-type': 'application/json'

@@ -47,7 +47,7 @@ const Login = () => {
         console.log(currentUser);
 
         //get and set  jwt token 
-        fetch("http://localhost:5000/jwt", {
+        fetch("https://assignmint-11-server.vercel.app/jwt", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -81,7 +81,7 @@ const Login = () => {
         console.log(currentUser);
         
            //get and set  jwt token 
-           fetch("http://localhost:5000/jwt", {
+           fetch("https://assignmint-11-server.vercel.app/jwt", {
             method: "POST",
             headers: {
               "content-type": "application/json",

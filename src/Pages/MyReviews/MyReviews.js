@@ -17,7 +17,7 @@ console.log(reviews)
 
   //query my  review
   useEffect(()=>{
-    fetch(`http://localhost:5000/reviews?email=${user?.email}`,{
+    fetch(`https://assignmint-11-server.vercel.app/reviews?email=${user?.email}`,{
      headers: {
       authorization:`Bearrer ${localStorage.getItem('fitness-trainerToken')}`
      }
@@ -44,7 +44,7 @@ console.log(reviews)
 const handleDelete=id=>{
     const agree= window.confirm('are you sure, you want to delete the review?')
     if(agree){
-      fetch(`http://localhost:5000/reviews/${id}`,{
+      fetch(`https://assignmint-11-server.vercel.app/reviews/${id}`,{
           method: 'DELETE'
       })
       .then(res=>res.json())

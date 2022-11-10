@@ -22,12 +22,12 @@ export const router= createBrowserRouter([
             {
                 path:'/',
                 element:<Home></Home>,
-                loader:()=>fetch('http://localhost:5000/services')
+                loader:()=>fetch('https://assignmint-11-server.vercel.app/services')
             },
             {
                 path:'/home',
                 element:<Home></Home>,
-                loader:()=>fetch('http://localhost:5000/services')
+                loader:()=>fetch('https://assignmint-11-server.vercel.app/services')
             },
             {
                 path:'/signUp',
@@ -48,18 +48,18 @@ export const router= createBrowserRouter([
             {
                 path:'/allServices',
                 element:<AllServices></AllServices>,
-                loader:()=>fetch('http://localhost:5000/allServices')
+                loader:()=>fetch('https://assignmint-11-server.vercel.app/allServices')
             },
             {
                 path:'/service/:id',
                 element:<ServiceDetailsAndReviews></ServiceDetailsAndReviews>,
-                loader:({params})=>fetch(`http://localhost:5000/service/${params.id}`)
+                loader:({params})=>fetch(`https://assignmint-11-server.vercel.app/service/${params.id}`)
             },
             {
 
                 path:'/editReview/:id',
                 element:<EditReview></EditReview>,
-                loader:({params})=>fetch(`http://localhost:5000/reviews/${params.id}`)
+                loader:({params})=>fetch(`https://assignmint-11-server.vercel.app/reviews/${params.id}`)
             },
             {
                 path:'/faq',
