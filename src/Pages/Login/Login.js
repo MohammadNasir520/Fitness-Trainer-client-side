@@ -72,7 +72,31 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        navigate(from, { replace: true });
+
+
+
+        const currentUser = {
+          email: user.email,
+        };
+        console.log(currentUser);
+        
+           //get and set  jwt token 
+           fetch("http://localhost:5000/jwt", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(currentUser),
+          })
+
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+           localStorage.setItem('fitness-trainerToken',data.token)
+           navigate(from,{replace: true});
+          });
+
+        // navigate(from, { replace: true });
       })
       .catch((err) => {
         console.log(err);
