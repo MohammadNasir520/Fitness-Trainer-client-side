@@ -10,17 +10,24 @@ const Home = () => {
   const services = useLoaderData();
   console.log(services);
 
+
+  // dynamic title set
   useTittle("Home");
   return (
     <div>
+
+
+{/* ---------------------slider --------------- */}
+
+
       <div className="h-56 sm:h-64 w-full xl:h-80 2xl:h-2/4 lg:w-3/4 mx-auto">
         <Carousel>
           <img
-            src="https://image.shutterstock.com/image-photo/man-running-on-road-toward-260nw-749383591.jpg"
+            src="https://blog.arenaswim.com/wp-content/uploads/2015/03/swimmer-training.jpg"
             alt="..."
           />
           <img
-            src="https://blog.arenaswim.com/wp-content/uploads/2015/03/swimmer-training.jpg"
+            src="https://www.outsideonline.com/wp-content/uploads/2019/02/22/man-doing-bench-pushups_s.jpg"
             alt="..."
           />
           <img
@@ -43,6 +50,10 @@ const Home = () => {
           <ServicesCard key={service._id} service={service}></ServicesCard>
         ))}
       </div>
+
+
+
+      {/*---------------- see all button---------------- */}
       <div>
         <Link to={"/allServices"}>
           {" "}

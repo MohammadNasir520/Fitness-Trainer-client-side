@@ -6,6 +6,8 @@ import { AuthContext } from "../../Context/AuthProvider";
 import useTittle from "../../Hooks/Hooks";
 
 const Login = () => {
+
+  //dynamic title add
   useTittle("Login");
 
   const location = useLocation();
@@ -16,6 +18,8 @@ const Login = () => {
   const { signInViaEmailAndPassword, signInByGoogle, loading } =
     useContext(AuthContext);
 
+
+    // spinner added
   if (loading) {
     return (
       <div className="text-center mt-6">
@@ -35,7 +39,7 @@ const Login = () => {
 
     console.log(email, password);
 
-
+// sign in by email and password
     signInViaEmailAndPassword(email, password)
       .then((result) => {
         const user = result.user;
@@ -67,6 +71,7 @@ const Login = () => {
       });
   };
 
+  //gogle sign in authentication
   const HandleSignInWithGoogle = () => {
     signInByGoogle(googleProvider)
       .then((result) => {

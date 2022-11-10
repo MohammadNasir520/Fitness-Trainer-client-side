@@ -7,6 +7,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import useTittle from '../../Hooks/Hooks';
 
 const MyReviews = () => {
+
+  // dynamic title setup
 useTittle('MyReview')
     const {user, LogOut}=useContext(AuthContext)
 

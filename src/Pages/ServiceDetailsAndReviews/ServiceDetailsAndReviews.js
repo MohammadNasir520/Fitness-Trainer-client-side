@@ -55,7 +55,7 @@ const ServiceDetailsAndReviews = () => {
       serviceName: name,
     };
 
-    //insert revie to mongo db
+    //insert review to mongo db
 
     fetch("https://assignmint-11-server.vercel.app/reviews", {
       method: "POST",
@@ -160,7 +160,7 @@ const ServiceDetailsAndReviews = () => {
             </h5>
             
           </div>
-
+         {/*  conditional rendering for no review*/}
           {
               reviews==0 &&
                <div className='w-full h-20 bg-red-100'>

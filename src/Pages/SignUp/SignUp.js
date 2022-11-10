@@ -5,10 +5,13 @@ import { AuthContext } from "../../Context/AuthProvider";
 import useTittle from "../../Hooks/Hooks";
 
 const SignUp = () => {
+
+
+  //dynamic title set
   useTittle('signUp')
   const { createUserWithEmail,loading,updateNameAndPhotURL } = useContext(AuthContext);
 
-
+//spinner added
   if (loading) {
     return (
       <div className="text-center mt-6">
@@ -17,8 +20,8 @@ const SignUp = () => {
     );
   }
 
-
-  const handleSubmit =event=>{
+//handle signup function
+  const handleSignup =event=>{
     event.preventDefault()
     const email=event.target.email.value;
     const name=event.target.name.value;
@@ -48,7 +51,7 @@ const handleSetNameAndPhoto=(name, photoURL)=>{
 
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-1/2 mx-auto my-9">
+    <form onSubmit={handleSignup} className="flex flex-col gap-4 w-1/2 mx-auto my-9">
       <div>
         <div className="mb-2 block">
           <Label htmlFor="name" value="Your Full Name" />

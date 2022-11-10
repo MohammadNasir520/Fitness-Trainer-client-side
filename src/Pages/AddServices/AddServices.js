@@ -7,6 +7,9 @@ import useTittle from '../../Hooks/Hooks';
 const AddServices = () => {
 
     const {user}=useContext(AuthContext)
+
+
+    // dynamic title set
   useTittle('AddServices')
 
 
