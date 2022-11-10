@@ -1,5 +1,6 @@
 import { Button, Label, TextInput } from 'flowbite-react';
 import React, { useContext } from 'react';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../../Context/AuthProvider';
 import useTittle from '../../Hooks/Hooks';
 
@@ -8,7 +9,10 @@ const AddServices = () => {
     const {user}=useContext(AuthContext)
   useTittle('AddServices')
 
-    const handleSubmit =event=>{
+
+
+  //add service handlar
+    const handleAddServiece =event=>{
         event.preventDefault()
         const name=event.target.name.value;
         const price=event.target.price.value;
@@ -31,7 +35,7 @@ const AddServices = () => {
         .then(data=>{
             console.log(data)
             if(data.acknowledged){
-                alert('service added succesfully')
+               toast('Service added Succesfully')
                 event.target.reset();
             }
         })
@@ -41,7 +45,7 @@ const AddServices = () => {
 
 
     return (
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-1/2 mx-auto">
+        <form onSubmit={handleAddServiece} className="flex flex-col gap-4 w-1/2 mx-auto">
         <div>
           <div className="mb-2 block">
             <Label htmlFor="name" value="Service name" />

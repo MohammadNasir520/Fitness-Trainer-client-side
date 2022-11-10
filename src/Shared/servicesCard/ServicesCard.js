@@ -16,7 +16,7 @@ const ServicesCard = ({ service }) => {
           <PhotoProvider>
       <div className="foo">
           <PhotoView  src={image}>
-            <img src={image} style={{ objectFit: 'cover' }} alt="service img" />
+            <img src={image} style={{objectFit: 'cover'  }} alt="service img" />
           </PhotoView>
        
       </div>

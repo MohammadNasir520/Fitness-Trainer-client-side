@@ -23,7 +23,7 @@ const FitStudent = () => {
                   />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className="truncate text-lg font-medium text-gray-900 dark:text-white">
+                  <p className="truncate text-sm lg:text-lg font-medium text-gray-900 dark:text-white">
                     Akash Ahmed
                   </p>
                   <p className="truncate text-sm text-gray-500 dark:text-gray-400">
@@ -32,7 +32,7 @@ const FitStudent = () => {
                 </div>
 
                     <div>
-                        <p className='text-lg'>MR. Bangladesh</p>
+                        <p className='text-sm lg:text-lg'>MR. Bangladesh</p>
                     </div>
 
                
@@ -49,7 +49,7 @@ const FitStudent = () => {
                   />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className="truncate text-lg font-medium text-gray-900 dark:text-white">
+                  <p className="truncate text-sm lg:text-lg font-medium text-gray-900 dark:text-white">
                     Akash Ahmed
                   </p>
                   <p className="truncate text-sm text-gray-500 dark:text-gray-400">
@@ -58,7 +58,7 @@ const FitStudent = () => {
                 </div>
 
                     <div>
-                        <p className='text-lg'>Swimming Champ</p>
+                        <p className='text-sm lg:text-lg'>Swimming Champ</p>
                     </div>
 
                
@@ -75,7 +75,7 @@ const FitStudent = () => {
                   />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className="truncate text-lg font-medium text-gray-900 dark:text-white">
+                  <p className="truncate text-sm lg:text-lg font-medium text-gray-900 dark:text-white">
                     Jubair Islam
                   </p>
                   <p className="truncate text-sm text-gray-500 dark:text-gray-400">
@@ -84,7 +84,7 @@ const FitStudent = () => {
                 </div>
 
                     <div>
-                        <p className='text-lg'>Running Champ</p>
+                        <p className='text-sm lg:text-lg'>Running Champ</p>
                     </div>
 
                

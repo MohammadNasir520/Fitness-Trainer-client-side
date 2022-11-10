@@ -65,7 +65,7 @@ const MyReviewCard = ({ myreview, handleDelete }) => {
                           onClick={() => handleDelete(_id)}
                           gradientMonochrome="cyan"
                         >
-                          Delete
+                          Delete 
                         </Button>
                       </div>
                     </Link>
