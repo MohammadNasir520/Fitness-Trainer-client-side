@@ -11,7 +11,7 @@ import ReviewCard from "./ReviewCard";
 const ServiceDetailsAndReviews = () => {
   useTittle("Service Review");
 
-  const { user } = useContext(AuthContext);
+  const { user,LogOut } = useContext(AuthContext);
 
   //destructurin servise details
   const service = useLoaderData();
@@ -24,12 +24,19 @@ const ServiceDetailsAndReviews = () => {
 
   //get customers review
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews?serviceId=${_id}`)
-      .then((res) => res.json())
+    fetch(`http://localhost:5000/serviceReviews?serviceId=${_id}`,{
+
+      headers: {
+        authorization:`Bearrer ${localStorage.getItem('fitness-trainerToken')}`
+       }
+    })
+
+      .then((res) =>res.json())
       .then((data) => {
+        console.log(data)
         setReviews(data);
       });
-  }, [refresh]);
+  }, [refresh],_id);
 
   //handle input reviwe and set to mongodb
   const handleReviews = (event) => {

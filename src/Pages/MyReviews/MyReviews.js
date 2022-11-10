@@ -8,7 +8,7 @@ import useTittle from '../../Hooks/Hooks';
 
 const MyReviews = () => {
 useTittle('MyReview')
-    const {user}=useContext(AuthContext)
+    const {user, LogOut}=useContext(AuthContext)
 
 
       // usestate for seting my review.
@@ -18,16 +18,25 @@ console.log(reviews)
   //query my  review
   useEffect(()=>{
     fetch(`http://localhost:5000/reviews?email=${user?.email}`,{
-      headers:{
-        
-                authorization: `Bearer ${localStorage.getItem('fitness token')}`
-              }
+     headers: {
+      authorization:`Bearrer ${localStorage.getItem('fitness-trainerToken')}`
+     }
 
     })
-     .then(res=>res.json())
+     .then(res=>{
+
+      if(res.status===401 || res.status===403){
+        LogOut()
+      }
+      return res.json();
+     })
     .then(data=>setReviews(data))
 
+
+
 },[user?.email],reviews)
+
+
 
 
 //deelte review system

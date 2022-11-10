@@ -6,16 +6,15 @@ import { AuthContext } from "../../Context/AuthProvider";
 import useTittle from "../../Hooks/Hooks";
 
 const Login = () => {
-  useTittle('Login');
+  useTittle("Login");
 
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  const location =useLocation();
-  const navigate=useNavigate();
+  const from = location.state?.from?.pathname || "/";
 
-
-  const from= location.state?.from?.pathname || '/';
-
-  const { signInViaEmailAndPassword, signInByGoogle ,loading} = useContext(AuthContext);
+  const { signInViaEmailAndPassword, signInByGoogle, loading } =
+    useContext(AuthContext);
 
   if (loading) {
     return (
@@ -25,60 +24,60 @@ const Login = () => {
     );
   }
 
-  const googleProvider= new GoogleAuthProvider();
-  // const navigate=useNavigate()
+  const googleProvider = new GoogleAuthProvider();
+
+
+//collecting data from form and login implement function
   const handleLogin = (event) => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
+
     console.log(email, password);
+
+
     signInViaEmailAndPassword(email, password)
       .then((result) => {
         const user = result.user;
         console.log(user);
 
-        const currentUser={
-          email:user.email
-      }
-      console.log(currentUser)
+        const currentUser = {
+          email: user.email,
+        };
+        console.log(currentUser);
 
-      //get jwt token
-      fetch('http://localhost:5000/jwt', {
-          method: 'POST',
-          headers:{
-              'content-type':'application/json'
+        //get and set  jwt token 
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
           },
-          body: JSON.stringify(currentUser)
-
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+           localStorage.setItem('fitness-trainerToken',data.token)
+           navigate(from,{replace: true});
+          });
       })
-      .then(res=>res.json())
-      .then(data=>{
-          console.log(data)
-          localStorage.setItem('fitness token',data.token);
-          navigate(from, {replace:true})
-      })
-
-      
-  })
-
 
       .catch((err) => {
         console.log(err);
       });
   };
 
-  const HandleSignInWithGoogle=()=>{
+  const HandleSignInWithGoogle = () => {
     signInByGoogle(googleProvider)
-    .then(result=>{
-    const user=result.user
-    console.log(user)
-    navigate(from, {replace:true})
-
-    })
-    .catch(err=>{
-        console.log(err)
-    })
-  }
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        navigate(from, { replace: true });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div>
@@ -124,7 +123,8 @@ const Login = () => {
         </div>
         <div className="flex justify-center space-x-4">
           <button aria-label="Log in with Google" className="p-3 rounded-sm">
-            <svg onClick={HandleSignInWithGoogle}
+            <svg
+              onClick={HandleSignInWithGoogle}
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 32 32"
               className="w-5 h-5 fill-current"

@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, signInWithPopup } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, signInWithPopup, updateProfile } from "firebase/auth";
 import app from '../FirebaseFile/Firebase.init';
 import { Spinner } from 'flowbite-react';
 
@@ -25,6 +25,8 @@ const createUserWithEmail= (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
   
+
+  //auth state change
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       console.log(currentUser);
@@ -44,12 +46,23 @@ const createUserWithEmail= (email, password) => {
         return signInWithPopup(auth, Provider);
       };
 
+
+
+
+      // set user name and photo 
+const updateNameAndPhotURL=(profile)=>{
+  return updateProfile(auth.currentUser, profile)
+}
+
+
+      //logout function
   const LogOut=()=>{
+    localStorage.removeItem('fitness-trainerToken')
     setLoading(true);
     return signOut(auth)
   }
 
-
+//set context value
     const value={
         user,
         createUserWithEmail,
@@ -57,6 +70,7 @@ const createUserWithEmail= (email, password) => {
         LogOut,
         signInByGoogle,
         loading,
+        updateNameAndPhotURL
         
     }
 
