@@ -10,7 +10,7 @@ const NavBar = () => {
 
   const handleSignOut = () => {
     LogOut()
-      .then(() => {})
+      .then(() => { })
       .catch((error) => {
         console.log(error);
       });
@@ -24,7 +24,7 @@ const NavBar = () => {
           Fitness Trainer
         </span>
       </Navbar.Brand>
-      <div className="flex md:order-2">
+      {/* <div className="flex md:order-2">
         <Dropdown
           arrowIcon={false}
           inline={true}
@@ -45,7 +45,7 @@ const NavBar = () => {
           <Dropdown.Item>Sign out</Dropdown.Item>
         </Dropdown>
         <Navbar.Toggle />
-      </div>
+      </div> */}
       <Navbar.Collapse>
         <Link to="/home">Home</Link>
         {/* <Link to="/navbars">About</Link> */}
@@ -62,7 +62,7 @@ const NavBar = () => {
         ) : (
           <Link to="/login">SignIn</Link>
         )}
-{/* -------------------------- */}
+        {/* -------------------------- */}
         {/* <Link to="/myReviews">MyReviews</Link>
         <Link to="/addServices">AddServices</Link>
         <Link onClick={handleSignOut}>SignOut</Link>

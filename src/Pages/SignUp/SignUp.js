@@ -1,17 +1,18 @@
 import { Button, Label, Spinner, TextInput } from "flowbite-react";
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { AuthContext } from "../../Context/AuthProvider";
 import useTittle from "../../Hooks/Hooks";
 
 const SignUp = () => {
 
-
+  const navigate = useNavigate()
   //dynamic title set
   useTittle('signUp')
-  const { createUserWithEmail,loading,updateNameAndPhotURL } = useContext(AuthContext);
+  const { createUserWithEmail, loading, updateNameAndPhotURL } = useContext(AuthContext);
 
-//spinner added
+  //spinner added
   if (loading) {
     return (
       <div className="text-center mt-6">
@@ -20,34 +21,69 @@ const SignUp = () => {
     );
   }
 
-//handle signup function
-  const handleSignup =event=>{
+  //handle signup function
+  const handleSignup = event => {
     event.preventDefault()
-    const email=event.target.email.value;
-    const name=event.target.name.value;
-    const photURL=event.target.PhotoURL.value;
-    const password=event.target.password.value;
-    console.log(email,password,name,photURL)
-    createUserWithEmail(email,password)
-    .then(result=>{
-        const user=result.user
+    const email = event.target.email.value;
+    const name = event.target.name.value;
+    const photURL = event.target.PhotoURL.value;
+    const password = event.target.password.value;
+    console.log(email, password, name, photURL)
+
+
+
+
+    createUserWithEmail(email, password)
+      .then(result => {
+        const user = result.user
         console.log(user)
+
         handleSetNameAndPhoto(name, photURL)
-    })
-    .catch(err=>{
+
+
+
+
+        const currentUser = {
+          email: user.email,
+        };
+        console.log(currentUser);
+
+        //get and set  jwt token 
+        fetch("https://assignmint-11-server.vercel.app/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(currentUser),
+        })
+
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            localStorage.setItem('fitness-trainerToken', data.token)
+            toast('Account created success fully')
+            navigate('/home');
+          });
+
+
+
+
+
+      })
+      .catch(err => {
         console.log(err)
-    })
+      })
   }
 
 
-// name and photoUrl passing handlar to the function in auth provider
-const handleSetNameAndPhoto=(name, photoURL)=>{
-  const profile={
-    displayName: name,
-    photoURL: photoURL
+  // name and photoUrl passing handlar to the function in auth provider
+  const handleSetNameAndPhoto = (name, photoURL) => {
+    const profile = {
+      displayName: name,
+      photoURL: photoURL
+    }
+    updateNameAndPhotURL(profile)
   }
-  updateNameAndPhotURL(profile)
-}
 
 
   return (

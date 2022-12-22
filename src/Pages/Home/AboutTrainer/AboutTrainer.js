@@ -7,9 +7,9 @@ const AboutTrainer = () => {
   return (
     <div className="my-10">
 
-        
+
       <div className="">
-      <h1 className="text-center text-xl font-bold">About Trainer</h1>
+        <h1 className="text-center text-xl font-bold">About Trainer</h1>
         <Card>
           <div className="flex justify-end px-4 pt-4">
             <Dropdown inline={true} label="">
@@ -49,25 +49,25 @@ const AboutTrainer = () => {
               Mohammad Nasir
             </h5>
             <span className="text-sm text-center text-gray-500 dark:text-gray-400">
-             Instructor of Fitness Trainer 
-             <br />
-             Mohammad Nasir is a fitness trainer who is very experinece in this sector .
-             <br />
+              Instructor of Fitness Trainer
+              <br />
+              Mohammad Nasir is a fitness trainer who is very experinece in this sector .
+              <br />
               His Student is Successful in Nationally and Internationally.
             </span>
             <div className="mt-4 flex space-x-3 lg:mt-6">
-              <Link
-                href="#"
+              <a
+                href="https://www.facebook.com/nasir.ahsan.520/"
                 className="inline-flex items-center rounded-lg bg-blue-700 py-2 px-4 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
-              Contact
-              </Link>
-              <Link
-                href="#"
+                Facebook
+              </a>
+              <a
+                href="https://www.linkedin.com/in/mdnasir-uddin/"
                 className="inline-flex items-center rounded-lg border border-gray-300 bg-white py-2 px-4 text-center text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
               >
-                Message
-              </Link>
+                LinkedIn
+              </a>
             </div>
           </div>
         </Card>

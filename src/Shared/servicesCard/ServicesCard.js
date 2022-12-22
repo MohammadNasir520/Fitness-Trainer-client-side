@@ -8,28 +8,28 @@ import { PhotoProvider, PhotoView } from 'react-photo-view';
 const ServicesCard = ({ service }) => {
   const { name, _id, price, description, image } = service;
   return (
-    <div className="max-w-sm mt-10 ">
+    <div className="max-w-sm mt-10  ">
       <Card >
-         
+
         {/* react photo viewr added to servicess image */}
-        
-          <PhotoProvider>
-      <div className="foo">
-          <PhotoView  src={image}>
-            <img src={image} style={{objectFit: 'cover'  }} alt="service img" />
-          </PhotoView>
-       
-      </div>
-    </PhotoProvider>
+
+        <PhotoProvider>
+          <div className="foo">
+            <PhotoView src={image}>
+              <img src={image} style={{ objectFit: 'cover' }} alt="service img" />
+            </PhotoView>
+
+          </div>
+        </PhotoProvider>
 
 
         <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
           {name}
         </h5>
         <h5 className="text-md font-semibold tracking-tight text-gray-900 dark:text-white">
-         Cervice Charge : {price} tk /month
+          Cervice Charge : {price} tk /month
         </h5>
-       
+
         <p className="font-normal text-gray-700 dark:text-gray-400">
           {description.slice(0, 100)}.....
         </p>
